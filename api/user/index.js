@@ -84,9 +84,7 @@ router.post("/register", validate(val.register), ctrl.registerNewUser);
  * @apiSuccess {Boolean} error Пользователь не авторизован
  */
 
-router.get("/profile", (req, res) => { 
-    res.render("profile.nunjucks", {});
-});
+router.get("/profile", authorizeUser, ctrl.getProfile);
 /**
  * @api {post} /api/user/profile Возвращает профиль пользователя
  * @apiName getProfile
@@ -112,7 +110,7 @@ router.get("/profile", (req, res) => {
 
 
 
-router.post("/profile", authorizeUser, ctrl.getProfile);
+router.post("/profile", authorizeUser, ctrl.POSTgetProfile);
 
 /**
  * @api {get} /api/user/update Возвращает шаблон "update_profile.nunjucks" обновляем профиль пользователя

@@ -75,8 +75,18 @@ Array.prototype.remove = function (value) {
     return false;
 }
 
-exports.getProfile = async (req, res, next) => {
+
+exports.getProfile  = async (req, res, next) => {
     try {
+       res.render("profile.nunjucks", {});
+   } catch (e) {
+       next(e);
+   }
+};
+
+exports.POSTgetProfile = async (req, res, next) => {
+    try {
+        console.log(req.user._id);
         const data = await userServices.getProfile(req.user._id);
         res.json(data);
     } catch (e) {

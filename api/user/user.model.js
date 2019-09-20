@@ -52,6 +52,7 @@ UserSchema.statics = {
             .exec();
     },
     getProfile: function (id) {
+        console.log("---",id)
         return this.find(id)
             .select("name surname nameCategori email password birthday role")
             .lean()
