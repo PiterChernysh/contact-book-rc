@@ -69,9 +69,9 @@ nunjucks.configure(path.join(__dirname, "templates"), {
 });
 
 
-// app.get("/", (req, res) => {
-//   res.render("index.nunjucks", { user: req.user || {} });
-// });
+app.get("/", (req, res) => {
+  res.render("index.nunjucks", { user: req.user || {} });
+});
 
 app.use("/api", require("./api"));
 
